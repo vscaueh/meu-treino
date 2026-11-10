@@ -1,0 +1,11 @@
+{
+  "name": "meu-treino",
+  "version": "0.1.0",
+  "private": true,
+  "engines": {"node": ">=24"},
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test"
+  }
+}
+
