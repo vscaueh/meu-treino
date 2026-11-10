@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Meu Treino</title>
+  <link rel="stylesheet" href="/style.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <header class="topbar"><div class="brand"><span class="mark">M</span><span>MEU <strong>TREINO</strong></span></div><span class="top-note">SEU PROGRESSO, UM TREINO DE CADA VEZ</span><button id="logout" class="ghost hidden">Sair</button></header>
+  <main>
+    <section id="auth" class="auth-wrap">
+      <div class="auth-intro"><div class="eyebrow">TREINE COM PROPÓSITO</div><h1>Seu treino.<br><em>Seu ritmo.</em></h1><p>Planeje, registre e acompanhe cada conquista em um só lugar.</p><div class="hero-stats"><span><b>01</b> Organize suas fichas</span><span><b>02</b> Registre sua evolução</span><span><b>03</b> Alcance suas metas</span></div></div>
+      <div class="auth-card"><div class="tabs"><button class="tab active" data-auth="login">Entrar</button><button class="tab" data-auth="register">Criar conta</button></div><h2 id="auth-title">Bem-vindo de volta</h2><p id="auth-subtitle" class="muted">Continue de onde parou.</p><form id="auth-form"><label>E-mail<input name="email" type="email" required autocomplete="email" placeholder="voce@exemplo.com"></label><label>Senha<input name="password" type="password" required minlength="8" autocomplete="current-password" placeholder="Pelo menos 8 caracteres"></label><button id="auth-submit" class="primary" type="submit">Entrar <span>↗</span></button></form></div>
+    </section>
+    <section id="dashboard" class="hidden">
+      <div class="welcome"><div><div class="eyebrow">PAINEL DE TREINO</div><h1>Vamos evoluir<span class="accent">.</span></h1><p id="user-email" class="muted"></p></div><div class="date-chip" id="today"></div></div>
+      <div class="stats"><article><span>EXERCÍCIOS</span><b id="stat-exercises">0</b><small>na sua biblioteca</small></article><article><span>FICHAS</span><b id="stat-plans">0</b><small>para seus objetivos</small></article><article><span>TREINOS</span><b id="stat-workouts">0</b><small>registrados</small></article><article class="dark-stat"><span>METAS ATIVAS</span><b id="stat-goals">0</b><small>em andamento</small></article></div>
+      <div class="grid"><div class="main-col">
+        <section class="panel"><div class="section-head"><div><div class="eyebrow">01 / SUA BIBLIOTECA</div><h2>Exercícios</h2></div></div><form id="exercise-form" class="inline-form"><input name="name" placeholder="Nome do exercício" required maxlength="120"><input name="muscleGroup" placeholder="Grupo muscular" required maxlength="120"><button class="primary" type="submit">Adicionar</button></form><div id="exercise-list" class="items"></div></section>
+        <section class="panel"><div class="section-head"><div><div class="eyebrow">02 / ORGANIZE</div><h2>Suas fichas</h2></div></div><form id="plan-form" class="inline-form"><input name="name" placeholder="Ex.: Treino A — superiores" required maxlength="120"><button class="primary" type="submit">Criar ficha</button></form><div id="plan-list" class="items"></div></section>
+        <section class="panel"><div class="section-head"><div><div class="eyebrow">03 / NA PRÁTICA</div><h2>Registrar treino</h2></div></div><form id="workout-form" class="stack-form"><div class="form-row"><label>Ficha<select name="planId" id="workout-plan" required></select></label><label>Data<input name="performedOn" type="date" required></label></div><div id="workout-entry-fields" class="items"></div><label>Observações<textarea name="notes" rows="2" maxlength="500" placeholder="Como foi o treino?"></textarea></label><button class="primary" type="submit">Salvar treino <span>↗</span></button></form></section>
+      </div><div class="side-col">
+        <section class="panel dark-panel"><div class="eyebrow">OLHO NO OBJETIVO</div><h2>Minhas metas<span class="accent">.</span></h2><form id="goal-form" class="stack-form"><label>O que você quer alcançar?<input name="description" placeholder="Ex.: Treinar 3 vezes por semana" required maxlength="200"></label><label>Até quando?<input name="targetDate" type="date" required></label><button class="light-button" type="submit">Adicionar meta +</button></form><div id="goal-list" class="goal-list"></div></section>
+        <section class="panel"><div class="eyebrow">ACOMPANHE SUA JORNADA</div><h2>Histórico</h2><div id="workout-list" class="items"></div></section>
+      </div></div>
+    </section>
+  </main>
+  <div id="toast" role="status" aria-live="polite" class="toast hidden"></div>
+</body>
+</html>
+
