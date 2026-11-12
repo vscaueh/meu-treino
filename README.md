@@ -2,6 +2,19 @@
 
 Aplicação full stack para planejar fichas e acompanhar treinos. Projeto individual dos entregáveis 5 e final de Ambientes de Desenvolvimento de Software.
 
+**Aplicação publicada:** https://meu-treino-vscaueh-b2akgha3facagbag.westus3-01.azurewebsites.net/
+
+## Demonstração rápida
+
+1. Abra a aplicação publicada, crie uma conta e entre.
+2. Cadastre um exercício (por exemplo, Agachamento / Pernas).
+3. Crie uma ficha e adicione o exercício a ela.
+4. Selecione a ficha, informe séries, repetições e carga, e salve o treino.
+5. Confira o histórico. Atualize a página para confirmar que os dados persistem.
+6. Crie uma meta, conclua-a e mostre a atualização do painel.
+
+O projeto individual possui mais de seis transações: cadastro de usuário, login, cadastro de exercício, criação de ficha, inclusão de exercício na ficha, registro e edição de treino, criação e conclusão de meta.
+
 ## Executar localmente
 
 Requer **Node.js 24** ou superior. Não há dependências externas.
