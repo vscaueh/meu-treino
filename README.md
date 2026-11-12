@@ -36,9 +36,9 @@ O frontend usa HTML, CSS e JavaScript. O backend usa a API HTTP nativa do Node.j
 ## Publicar na Azure App Service
 
 1. Crie um **Web App** de código com **Node.js 24 LTS** em **Windows**, processo **64 bits**. Escolha o plano de custo compatível com sua assinatura, como Free F1 se disponível.
-2. Em **Deployment Center**, conecte este repositório GitHub e a branch `main`.
+2. Publique o conteúdo do repositório na pasta `wwwroot`. O arquivo `web.config` inicia o servidor Node.js no Windows App Service.
 3. Em **Configuration > Application settings**, defina `NODE_ENV=production` e `WEBSITE_NODE_DEFAULT_VERSION=~24`.
-4. Após a publicação, abra a URL `https://<nome-do-app>.azurewebsites.net`, crie uma conta de teste e registre um treino para confirmar a gravação.
+4. Após a publicação, abra a URL `https://meu-treino-vscaueh-b2akgha3facagbag.westus3-01.azurewebsites.net/`, crie uma conta de teste e registre um treino para confirmar a gravação.
 
 O aplicativo usa a porta informada pela Azure em `PORT` e grava o SQLite em `%HOME%/site/wwwroot/App_Data/meu-treino` quando executado no App Service. Também aceita `DATA_DIR` para indicar outro diretório. Faça backup do banco antes de novas publicações. Para uma versão de produção com muitos usuários, migre para um banco gerenciado.
 
