@@ -218,7 +218,8 @@ const server = http.createServer(async (req, res) => {
     if (!error.status) console.error(error);
   }
 });
-if (require.main === module) {
+// IISNode loads this file through an interceptor, so it is not require.main there.
+if (require.main === module || process.env.PORT) {
   const port = process.env.PORT ? (/^\d+$/.test(process.env.PORT) ? Number(process.env.PORT) : process.env.PORT) : 3000;
   server.listen(port, () => console.log("Meu Treino iniciado."));
 }
