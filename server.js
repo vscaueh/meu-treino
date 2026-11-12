@@ -218,6 +218,9 @@ const server = http.createServer(async (req, res) => {
     if (!error.status) console.error(error);
   }
 });
-if (require.main === module) server.listen(Number(process.env.PORT) || 3000, () => console.log("Meu Treino disponível na porta " + (process.env.PORT || 3000)));
+if (require.main === module) {
+  const port = process.env.PORT ? (/^\d+$/.test(process.env.PORT) ? Number(process.env.PORT) : process.env.PORT) : 3000;
+  server.listen(port, () => console.log("Meu Treino iniciado."));
+}
 module.exports = { server, db };
 
