@@ -4,18 +4,6 @@ Aplicação web individual para organizar fichas, registrar treinos e acompanhar
 
 **Aplicação publicada na Microsoft Azure:** [Abrir Meu Treino](https://meu-treino-vscaueh-b2akgha3facagbag.westus3-01.azurewebsites.net/)
 
-## Evidências
-
-Capturas da aplicação publicada na Azure em **19/11/2026**:
-
-**Tela de entrada:** a URL pública abre a interface de cadastro e login.
-
-![Tela de entrada do Meu Treino publicado na Azure](docs/evidencias/aplicacao-azure.png)
-
-**Painel após o login:** recorte com os indicadores, exercícios e fichas da conta de demonstração.
-
-![Recorte do painel do Meu Treino publicado na Azure](docs/evidencias/painel-azure-recorte.png)
-
 ## Tecnologias e serviços usados
 
 | Parte | Tecnologia ou serviço | Uso no projeto |
@@ -80,3 +68,14 @@ web.config       Configuração da aplicação no Azure App Service
 docs/evidencias/ Prints da aplicação publicada
 ```
 
+## Evidências
+
+Capturas da aplicação publicada na Azure em **19/11/2026**:
+
+**Tela de entrada:** a URL pública abre a interface de cadastro e login.
+
+![Tela de entrada do Meu Treino publicado na Azure](docs/evidencias/aplicacao-azure.png)
+
+**Painel após o login:** recorte com os indicadores, exercícios e fichas da conta de demonstração.
+
+![Recorte do painel do Meu Treino publicado na Azure](docs/evidencias/painel-azure-recorte.png)
