@@ -85,11 +85,11 @@ scripts/         Consulta da estrutura do banco SQLite
 
 ## Trabalho final: seis ambientes
 
-Projeto individual: Caueh Motta é responsável pelo planejamento, design, implementação, testes e publicação.
+Projeto individual: Caueh Mota é responsável pelo planejamento, design, implementação, testes e publicação.
 
 | Ambiente solicitado | Como foi usado |
 | --- | --- |
-| Gestão de tarefas | [Quadro público no Trello](https://trello.com/b/ZO6fC4cG/meu-treino-trabalho-final), com listas A fazer, Em andamento e Concluído. Como o trabalho é individual, Caueh Motta assume planejamento, design, desenvolvimento, testes e publicação. |
+| Gestão de tarefas | [Quadro público no Trello](https://trello.com/b/ZO6fC4cG/meu-treino-trabalho-final), com listas A fazer, Em andamento e Concluído. Como o trabalho é individual, Caueh Mota assume planejamento, design, desenvolvimento, testes e publicação. |
 | Design de interfaces | [Protótipo no Figma](https://www.figma.com/design/Cx5uPXwOuBWwmiUsfv5mBH/Meu-Treino-%E2%80%94-prot%C3%B3tipo-de-interface), com telas editáveis de login e painel. É uma proposta visual; alguns dados e detalhes ilustrativos diferem da aplicação funcional. |
 | Desenvolvimento | Visual Studio Code para trabalhar nos arquivos da interface, do servidor Node.js e dos testes, com versão do código neste repositório. |
 | Banco de dados | SQLite acessado pelo módulo `node:sqlite`. O comando `npm run db:inspect` permite conferir a estrutura do banco sem expor dados pessoais. |
