@@ -12,12 +12,12 @@ Aplicação web individual para organizar fichas, registrar treinos e acompanhar
 | Servidor | Node.js 24, módulo `node:http` | Servir a interface e disponibilizar as rotas da API |
 | Banco de dados | SQLite, módulo `node:sqlite` | Guardar usuários, sessões, exercícios, fichas, treinos e metas |
 | Autenticação | `node:crypto` e cookies HTTP-only | Gerar hash das senhas, criar sessões e proteger os dados de cada usuário |
-| Testes | `node:test` e `node:assert` | Verificar os principais fluxos da API com `npm test` |
+| Testes | `node:test`, `node:assert` e Selenium WebDriver | Verificar a API e os fluxos reais da interface no navegador |
 | Código-fonte | GitHub | Versionar e disponibilizar o projeto |
 | Nuvem | Microsoft Azure App Service | Executar a aplicação e oferecer a URL pública |
 | Configuração da hospedagem | `web.config` e IISNode | Iniciar e encaminhar as requisições para o servidor Node.js no App Service para Windows |
 
-O projeto não depende de bibliotecas externas do npm. O banco SQLite é criado automaticamente na primeira execução.
+O servidor usa os módulos nativos do Node.js. O Selenium WebDriver é uma dependência de desenvolvimento, usada somente nos testes de interface. O banco SQLite é criado automaticamente na primeira execução.
 
 ## Funcionalidades
 
@@ -46,9 +46,12 @@ Abra <http://localhost:3000>. O arquivo local do banco fica em `data/treinos.sql
 
 ```bash
 npm test
+npm run test:selenium
 ```
 
-Em 23/11/2026, os **3 testes passaram** localmente. Eles verificam cadastro e login, proteção das rotas, criação de exercícios, fichas, treinos e metas, edição de treino, validação de entradas e separação dos dados entre usuários. Os cenários estão em [`tests/app.test.js`](tests/app.test.js). O GitHub Actions também executa os testes a cada envio de código.
+Em 23/11/2026, os **3 testes da API** e os **2 testes Selenium** passaram localmente. Os testes da API verificam cadastro e login, proteção das rotas, criação de exercícios, fichas, treinos e metas, edição de treino, validação de entradas e separação dos dados entre usuários. Os cenários estão em [`tests/app.test.js`](tests/app.test.js).
+
+Os testes Selenium em [`e2e/selenium.cjs`](e2e/selenium.cjs) abrem o navegador, criam uma conta, entram no painel e cadastram um exercício e uma ficha pela interface. No Windows, usam o Brave instalado no caminho padrão; em outros sistemas, usam o Chrome. Se o Brave estiver em outro local, defina `BRAVE_BIN` com o caminho do executável. O Selenium Manager obtém o driver compatível. As capturas são salvas em `artifacts/selenium/`, pasta ignorada pelo Git. O GitHub Actions executa os dois comandos a cada envio de código.
 
 ## Inspecionar o banco de dados
 
@@ -74,6 +77,7 @@ Tutorial de referência para a implantação: [Criar um aplicativo Web Node.js n
 public/          Interface web (HTML, CSS e JavaScript)
 server.js        Servidor, API e acesso ao SQLite
 tests/           Testes automatizados
+e2e/             Testes Selenium da interface
 web.config       Configuração da aplicação no Azure App Service
 docs/evidencias/ Prints da aplicação publicada
 scripts/         Consulta da estrutura do banco SQLite
@@ -85,11 +89,11 @@ Projeto individual: Caueh Motta é responsável pelo planejamento, design, imple
 
 | Ambiente solicitado | Como foi usado |
 | --- | --- |
-| Gestão de tarefas | Quadro Trello **Meu Treino — Trabalho Final**, com listas A fazer, Em andamento e Concluído. O quadro é privado; o print abaixo registra as tarefas e os papéis. |
+| Gestão de tarefas | [Quadro público no Trello](https://trello.com/b/ZO6fC4cG/meu-treino-trabalho-final), com listas A fazer, Em andamento e Concluído. Como o trabalho é individual, Caueh Motta assume planejamento, design, desenvolvimento, testes e publicação. |
 | Design de interfaces | [Protótipo no Figma](https://www.figma.com/design/Cx5uPXwOuBWwmiUsfv5mBH/Meu-Treino-%E2%80%94-prot%C3%B3tipo-de-interface), com telas editáveis de login e painel. É uma proposta visual; alguns dados e detalhes ilustrativos diferem da aplicação funcional. |
 | Desenvolvimento | Visual Studio Code para trabalhar nos arquivos da interface, do servidor Node.js e dos testes, com versão do código neste repositório. |
 | Banco de dados | SQLite acessado pelo módulo `node:sqlite`. O comando `npm run db:inspect` permite conferir a estrutura do banco sem expor dados pessoais. |
-| Testes | `node:test` e `node:assert` com `npm test`, executados localmente e no GitHub Actions. Selenium foi citado como exemplo na atividade; aqui o ambiente de testes usado foi o Node.js com CI. |
+| Testes | `node:test` e `node:assert` para a API; Selenium WebDriver para testar a interface no Brave. Execute `npm test` e `npm run test:selenium`. O GitHub Actions repete ambos. |
 | Execução e servidor web | Node.js no Microsoft Azure App Service. A [URL pública](https://meu-treino-vscaueh-b2akgha3facagbag.westus3-01.azurewebsites.net/) permite testar a aplicação no navegador. |
 
 Fluxo da aplicação: **navegador → API Node.js → SQLite → resposta ao navegador**. O servidor valida as entradas e relaciona cada registro ao usuário autenticado.
@@ -108,7 +112,7 @@ Capturas da aplicação publicada na Azure em **19/11/2026**:
 
 ### Evidências do trabalho final
 
-**Gestão de tarefas no Trello:**
+**Gestão de tarefas no [Trello](https://trello.com/b/ZO6fC4cG/meu-treino-trabalho-final):**
 
 ![Quadro de tarefas Meu Treino no Trello](docs/evidencias/trello-meu-treino.png)
 
@@ -125,6 +129,12 @@ Capturas da aplicação publicada na Azure em **19/11/2026**:
 **Testes automatizados no GitHub Actions:**
 
 ![Três testes aprovados no GitHub Actions](docs/evidencias/github-actions-testes.png)
+
+**Testes da interface com Selenium WebDriver no Brave:** as capturas abaixo foram feitas durante a execução dos dois testes.
+
+![Selenium após criar conta e entrar no painel](docs/evidencias/selenium-login.png)
+
+![Selenium após cadastrar exercício e ficha](docs/evidencias/selenium-painel.png)
 
 **Aplicação em execução no Microsoft Azure App Service:**
 

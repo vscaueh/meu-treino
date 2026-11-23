@@ -1,4 +1,6 @@
 data/
+artifacts/
+chromedriver/
 node_modules/
 .env
 
