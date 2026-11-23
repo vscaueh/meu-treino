@@ -48,7 +48,17 @@ Abra <http://localhost:3000>. O arquivo local do banco fica em `data/treinos.sql
 npm test
 ```
 
-Em 19/11/2026, os **3 testes passaram**. Eles verificam cadastro e login, proteção das rotas, criação de exercícios, fichas, treinos e metas, edição de treino, validação de entradas e separação dos dados entre usuários. Os cenários estão em [`tests/app.test.js`](tests/app.test.js).
+Em 23/11/2026, os **3 testes passaram** localmente. Eles verificam cadastro e login, proteção das rotas, criação de exercícios, fichas, treinos e metas, edição de treino, validação de entradas e separação dos dados entre usuários. Os cenários estão em [`tests/app.test.js`](tests/app.test.js). O GitHub Actions também executa os testes a cada envio de código.
+
+## Inspecionar o banco de dados
+
+Depois de iniciar a aplicação uma vez, execute:
+
+```bash
+npm run db:inspect
+```
+
+O comando usa o cliente SQLite do Node.js para listar as oito tabelas do banco local. Ele abre o arquivo somente para leitura e não mostra e-mails, senhas ou registros de usuários. O script está em [`scripts/inspect-db.js`](scripts/inspect-db.js). Para consultar outro diretório, defina `DATA_DIR` antes de executar o comando.
 
 ## Publicação na Azure
 
@@ -66,7 +76,23 @@ server.js        Servidor, API e acesso ao SQLite
 tests/           Testes automatizados
 web.config       Configuração da aplicação no Azure App Service
 docs/evidencias/ Prints da aplicação publicada
+scripts/         Consulta da estrutura do banco SQLite
 ```
+
+## Trabalho final: seis ambientes
+
+Projeto individual: Caueh Motta é responsável pelo planejamento, design, implementação, testes e publicação.
+
+| Ambiente solicitado | Como foi usado |
+| --- | --- |
+| Gestão de tarefas | Quadro Trello **Meu Treino — Trabalho Final**, com listas A fazer, Em andamento e Concluído. O quadro é privado; o print abaixo registra as tarefas e os papéis. |
+| Design de interfaces | [Protótipo no Figma](https://www.figma.com/design/Cx5uPXwOuBWwmiUsfv5mBH/Meu-Treino-%E2%80%94-prot%C3%B3tipo-de-interface), com telas editáveis de login e painel. É uma proposta visual; alguns dados e detalhes ilustrativos diferem da aplicação funcional. |
+| Desenvolvimento | Visual Studio Code para trabalhar nos arquivos da interface, do servidor Node.js e dos testes, com versão do código neste repositório. |
+| Banco de dados | SQLite acessado pelo módulo `node:sqlite`. O comando `npm run db:inspect` permite conferir a estrutura do banco sem expor dados pessoais. |
+| Testes | `node:test` e `node:assert` com `npm test`, executados localmente e no GitHub Actions. Selenium foi citado como exemplo na atividade; aqui o ambiente de testes usado foi o Node.js com CI. |
+| Execução e servidor web | Node.js no Microsoft Azure App Service. A [URL pública](https://meu-treino-vscaueh-b2akgha3facagbag.westus3-01.azurewebsites.net/) permite testar a aplicação no navegador. |
+
+Fluxo da aplicação: **navegador → API Node.js → SQLite → resposta ao navegador**. O servidor valida as entradas e relaciona cada registro ao usuário autenticado.
 
 ## Evidências
 
@@ -79,3 +105,29 @@ Capturas da aplicação publicada na Azure em **19/11/2026**:
 **Painel após o login:** recorte com os indicadores, exercícios e fichas da conta de demonstração.
 
 ![Recorte do painel do Meu Treino publicado na Azure](docs/evidencias/painel-azure-recorte.png)
+
+### Evidências do trabalho final
+
+**Gestão de tarefas no Trello:**
+
+![Quadro de tarefas Meu Treino no Trello](docs/evidencias/trello-meu-treino.png)
+
+**Protótipo de interface no Figma:**
+
+![Protótipo da tela de login no Figma](docs/evidencias/figma-login.png)
+
+![Protótipo do painel no Figma](docs/evidencias/figma-painel.png)
+
+**Desenvolvimento no Visual Studio Code e estrutura do SQLite:**
+
+![Código do servidor e criação das tabelas SQLite no Visual Studio Code](docs/evidencias/vscode-servidor.png)
+
+**Testes automatizados no GitHub Actions:**
+
+![Três testes aprovados no GitHub Actions](docs/evidencias/github-actions-testes.png)
+
+**Aplicação em execução no Microsoft Azure App Service:**
+
+![Status em execução e domínio do Meu Treino na Azure](docs/evidencias/azure-status.png)
+
+![Pilha Node.js do Meu Treino na Azure](docs/evidencias/azure-runtime.png)
