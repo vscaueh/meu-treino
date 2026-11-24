@@ -53,6 +53,8 @@ Em 23/11/2026, os **3 testes da API** e os **2 testes Selenium** passaram localm
 
 Os testes Selenium em [`e2e/selenium.cjs`](e2e/selenium.cjs) abrem o navegador, criam uma conta, entram no painel e cadastram um exercício e uma ficha pela interface. No Windows, usam o Brave instalado no caminho padrão; em outros sistemas, usam o Chrome. Se o Brave estiver em outro local, defina `BRAVE_BIN` com o caminho do executável. O Selenium Manager obtém o driver compatível. As capturas são salvas em `artifacts/selenium/`, pasta ignorada pelo Git. O GitHub Actions executa os dois comandos a cada envio de código.
 
+Para apresentar os testes sem instalar programas, abra a aba [Actions](https://github.com/vscaueh/meu-treino/actions/workflows/tests.yml) no GitHub, selecione **Testes**, clique em **Run workflow** e confirme. Abra a execução criada para acompanhar `npm test` e `npm run test:selenium`. Os testes rodam no computador do GitHub com Node.js 24; o navegador local não precisa ter Node.js instalado.
+
 ## Inspecionar o banco de dados
 
 Depois de iniciar a aplicação uma vez, execute:
